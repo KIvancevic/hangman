@@ -11,16 +11,9 @@ import Facebook from './components/LoginScreen';
 
 import './App.css';
 
-const words = ['Application', 'prograMming', 'intErface', 'wizard'];
+const words = ['Application asd', 'prograMming asd', 'intErface asd', 'wizard asd'];
 
 let selectedWord = words[Math.floor(Math.random() * words.length)];
-
-let playable = true;
-
-const correctLetters = [];
-const wrongLetters = [];
-
-
 
 function App() {
   const [playable, setPlayable] = useState(true)
