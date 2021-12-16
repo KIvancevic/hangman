@@ -13,10 +13,14 @@ function FirstScreen({ stateChanger, active, setUsername, username })  {
           style={{
             width: '300px',
             height: '30px',
-            caretColor: '#b36868',
+            caretColor: '#ff00cc',
             borderRadius: '5px',
-            border: '2px solid #9194a199',
-            outline: 'none'
+            border: '2px solid #ff00cc66',
+            outline: 'none',
+            textAlign: 'center',
+            color: '#ff00cc',
+            fontSize: '16px',
+            letterSpacing: '0.1em',
           }}
           type="text"
           name="name"
@@ -38,6 +42,7 @@ function FirstScreen({ stateChanger, active, setUsername, username })  {
             letterSpacing: '0.1em',
             fontSize: '16px',
             borderRadius: '7px',
+            cursor: 'pointer',
             
           }}
           onClick={() => stateChanger(true)}

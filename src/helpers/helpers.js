@@ -1,5 +1,3 @@
-
-
 export function checkWin(correct, wrong, word) {
   let status = 'win';
 

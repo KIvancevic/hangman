@@ -14,6 +14,12 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
+  caret-color: transparent;
+  user-select: none; /* supported by Chrome and Opera */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
 h1 {
@@ -22,10 +28,12 @@ h1 {
 
 .game-container {
   padding: 20px 30px;
-  position: relative;
   margin: auto;
-  height: 350px;
+  height: 400px;
   width: 50%;
+  display: flex;
+  flex-direction: wrap;
+  justify-content: space-between;
 }
 
 .figure-container {
@@ -40,12 +48,18 @@ h1 {
 }
 
 .wrong-letters-container {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
   text-align: right;
+}
+
+@media screen and (max-width: 890px) { 
+  .game-container {
+    flex-direction: column;
+    height: 390px;
+  }
+  .wrong-letters-container {
+    margin-top: 10px;
+    text-align: center;
+  }
 }
 
 .wrong-letters-container p {
@@ -95,8 +109,6 @@ h1 {
   left: 0;
   right: 0;
   overflow: auto;
-  align-items: center;
-  justify-content: center;
 }
 
 .popup {
@@ -111,6 +123,24 @@ h1 {
   height: 80%;
   flex-direction: column;
   margin: auto;
+  cursor: pointer;
+
+}
+
+
+.popup::-webkit-scrollbar {
+  width: 1em;
+}
+ 
+.popup::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px #7303c0;
+  border-radius: 5px;
+}
+ 
+.popup::-webkit-scrollbar-thumb {
+  background-color: #7303c080;
+  outline: 1px solid slategrey;
+  border-radius: 5px;
 }
 
 
@@ -119,10 +149,12 @@ h1 {
   background-color: #fff;
   color: #2980b9;
   border: 0;
+  border-radius: 10px;
+  font-weight: 600;
   margin-top: 20px;
   padding: 12px 20px;
   font-size: 16px;
-  width: 40%;
+  width: 100%;
 }
 
 .popup button:active {
@@ -164,6 +196,7 @@ h1 {
   background: -webkit-linear-gradient(to top, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to top, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   z-index: 1;
+  caret-color: transparent;
 }
 
 .aligningFirstScreenElements {
@@ -171,6 +204,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   width: 100%;
   height: 100%;
 }
@@ -193,28 +227,32 @@ h1 {
 
 .scoreboard {
   display: flex;
-  border: 1px solid red;
   min-width: 200px;
   max-width: 600px;
   flex-wrap:wrap;
   margin: 20px auto;
+  justify-content: center;
+  border-radius: 6px;
+  border: 3px solid #ff00cc;
 }
+
 
 .highscoreRow {
   display: flex;
   justify-content: space-between;
-  border: 1px solid green;
-  width: 250px;
+  border-top: 1px solid #ff00cc;
+  width: 100%;
   padding-left: 15px;
   padding-right: 15px;
   flex-wrap:wrap;
+
 }
 
 .usernameAndScore{
   width:100%;
   display: flex;
   justify-content: space-evenly;
-  border: 1px solid green;
+  border-top: 1px solid #ff00cc;
   padding-left: 15px;
   padding-right: 15px;
 }

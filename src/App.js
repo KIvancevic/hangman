@@ -56,11 +56,9 @@ function App() {
     
   } 
 
-  console.log('quote: ', quote);
 
   useEffect(() => {
     
-      
       const handleKeyDown = event => {
       const { key, keyCode } = event;
         
@@ -80,6 +78,7 @@ function App() {
           }
         }
     }
+    
     window.addEventListener('keydown', handleKeyDown);
 
     return () => window.removeEventListener('keydown', handleKeyDown);
@@ -98,36 +97,6 @@ function App() {
     
     selectedWord = quote
   }
-
-  // const handleGuess = e => {
-  //   let letter = e.target.value
-  //   setCorrectLetters.add([letter])
-  //   setWrongLetters = quote.includes(letter) ? '' : setWrongLetters.add([letter])
-  // }
-
-  // function generateButtons() {
-  //   return "abcdefghjklmnopqrstuvwxyz".split("").map( (letter, i) => {
-  //     return (
-  //       <button 
-  //        key={i}
-  //        value={letter}
-  //        onClick={handleGuess}
-  //        disabled={() => correctLetters.has(letter)}
-  //        style={{
-  //          margin: '2px',
-  //          width: '50px',
-  //          height: '50px',
-  //          backgroundColor: '#2980b9',
-  //          color: 'white'
-  //        }}
-  //       >
-  //         {letter}
-  //       </button>
-  //     )
-  //   })
-  // }
-
-  // let gameStat = generateButtons();
 
   useEffect(() => {
     if(firstKeyOrButtonPress) {
@@ -148,20 +117,8 @@ function App() {
   function end(endTime) {
     endTime = new Date();
     const elapsedTime = endTime - startTime;
-    console.log('elapsedTime: ', elapsedTime)
     setElapsedTime(elapsedTime)
   }
-
-  // useEffect(() => {
-  //   fetch('https://my-json-server.typicode.com/stanko-ingemark/hang_the_wise_man_frontend_task/highscores')
-  //     .then(res => {
-  //       return res.json()
-  //     })
-  //     .then((data) => {
-  //       setBlogs(data);
-  //     })
-  // }, []);
-  
 
   return (
     <>
@@ -218,17 +175,6 @@ function App() {
                   sentence={selectedWord} quoteIdString={quoteId} lengthInteger={quoteLength} uniqueCharactersInteger={uniqueCharacters}
                   errorsInteger={wrongLettersLength} durationInteger={elapsedTime} userNameString={userNameParent}
                 />
-                {/* <div
-                   style={{
-                    width: '100%',
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    marginTop: '5%',
-                  }}
-                >
-                  {gameStat}
-                </div> */}
             </>
        
   }

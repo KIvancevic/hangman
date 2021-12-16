@@ -11,7 +11,7 @@ const Popup =
   let playable = true;
 
   const [scoreBoard, setScoreBoard] = useState(null);
-  const [scoreErrors, setErrors] = useState(null);
+
 
   useEffect(() => {
     fetch('https://my-json-server.typicode.com/stanko-ingemark/hang_the_wise_man_frontend_task/highscores')
@@ -20,7 +20,6 @@ const Popup =
     })
     .then((data) => {
       setScoreBoard(data);
-      setErrors(data.errors)
     })
   }, [])
 
@@ -40,8 +39,6 @@ const Popup =
         errors: `${errorsInteger}`,
         duration: `${durationInteger}`
       })
-    }).then(() => {
-      console.log('Post send');
     })
 
   } else if ( checkWin(correctLetters, wrongLetters, selectedWord) === 'lose' ) {
@@ -51,6 +48,28 @@ const Popup =
   }
 
   useEffect(() => setPlayable(playable));
+
+  function normalizeScore(val, max, min) {
+    return (val-min) / (max-min)
+  }
+
+  function calculateScore (user) {
+
+    let uniqCh = user.uniqueCharacters
+    let uniqChar = normalizeScore(uniqCh, 50, 0)
+
+    let userLeng = user.length
+    let userLe = normalizeScore(userLeng, 200, 0)
+
+    let userErrors = user.errors
+    let userErr = normalizeScore(userErrors, 20, 0)
+
+    let userDuration= user.duration
+    let userDur = normalizeScore(userDuration, 200000, 0)
+
+    return (30*uniqChar) + (20*userLe) + (40/userErr) + userDur
+    
+  }
  
 
   return (
@@ -62,7 +81,6 @@ const Popup =
         <h3>{finalMessageRevealWord}</h3>
         <button 
           onClick={playAgain} 
-          style={{marginBottom: '10px'}}
         >
           Play Again
         </button>
@@ -70,18 +88,33 @@ const Popup =
           <div
             className="scoreboard"
           >
+            <h1>Highscore table fetched from api</h1>
             <div
               className="usernameAndScore"
             >
-              <p>Username</p>
-              <p>&</p>
-              <p>Score</p>
+              <h3>Username</h3>
+              <h3>&</h3>
+              <h3>Score</h3>
             </div>
-              {scoreBoard.map((score, i) => (
+              {scoreBoard
+              .map((user) => {
+                return {
+                  ...user,
+                  score: Math.floor(calculateScore(user))
+                }
+              })
+              .sort((a,b) => {
+                if (a.score < b.score) {
+                  return 1
+                } else {
+                  return -1
+                }
+              })
+              .map((user, i) => (
                 <HighScoreRow 
-                  username={score.userName}
-                  errors={score.errors}
+                  username={user.userName}
                   key={i}
+                  score={user.score}
                 />
                 
                 ))}
