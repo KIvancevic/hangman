@@ -1,6 +1,6 @@
 # Getting Started 
 
-Go on Code > download zip file of repository
+Go to https://github.com/KIvancevic/hangman on Code (upper right corner) > download zip file of repository
 
 ## After download
 
@@ -14,8 +14,6 @@ After that run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-
 
 ### First screen
 
