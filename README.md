@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Getting Started 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Go to https://github.com/KIvancevic/hangman on Code (upper right corner) > download zip file of repository
 
-## Available Scripts
+## After download
 
-In the project directory, you can run:
+Paste the files from zip file into folder you would like and open that folder in your source code editor
+
+After you open it, in your terminal run npm install, npm install axios 
+
+After that run:
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### First screen
 
-### `npm test`
+On first screen you are required to enter your name otherwise you can't play the game
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Hangman game
 
-### `npm run build`
+Guess the quote by pressing letter on keyboard.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Wrong letters & unsuccessful
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+If you press latter that's not in the quote that latter will be displayed as error and will count every wrong letter pressed.
+You have up to 5 errors to make, after 6 one the game is over and the screen will show you the quote which was there to be guessed
+and it will give you option to restart game and start again.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Correct letters
 
-### `npm run eject`
+If you guees the correct letter in quote that latter will be displayed to you. The guessed letter is not case sensitive,
+for example if you press uppercase letter N every N or n letter will be displayed to you.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Game finished successful
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you guess all the latters in quote before hitting 6 errors, you will finish game successfully, your score will be send to server
+, popup window telling you finished game successfully will be presented and also you will be able to see highscore table with best scores.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Score
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The score in highscore table is calculated on this parameters:
+The ones who have less errors got better score
+The ones who got same errors but more unique characters (such as ., etc.) will have better score
+If you have same number of errors and unique character than the ones who have more quote letters will have better score
+If you have same number of errors, unique characters and letters quote, than the ones who solve faster will have better score
 
-## Learn More
+All 4 parameters are taken in calculating the final score
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Have fun playing the game and enjoy
